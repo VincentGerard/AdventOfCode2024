@@ -95,10 +95,14 @@ namespace AdventOfCode2024.Class
 					if(i - 3 > 0 && text[i - 3] == 'd' && text[i - 2] == 'o' && text[i - 1] == '(')
 					{
 						isMulEnabled = true;
+						lastMIndex = -1;
+						lastParenthesesIndex = -1;
 					}
 					else if(i - 6 > 0 && text[i - 6] == 'd' && text[i - 5] == 'o' && text[i - 4] == 'n' && text[i - 3] == '\'' && text[i - 2] == 't' && text[i - 1] == '(')
 					{
 						isMulEnabled = false;
+						lastMIndex = -1;
+						lastParenthesesIndex = -1;
 					}
 					else
 					{
