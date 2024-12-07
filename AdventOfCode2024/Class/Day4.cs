@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2024.Class
+﻿namespace AdventOfCode2024.Class
 {
 	public static class Day4
 	{
@@ -64,7 +58,35 @@ namespace AdventOfCode2024.Class
 		
 		public static int GetPart2Result(string filename)
 		{
-			return 0;
-		}
+            string text = Helper.GetFileContent(filename);
+            int nbrRows = text.Split("\r\n").Count();
+            int nbrColumns = text.Split("\r\n").First().Length;
+            int nbrXmas = 0;
+            text = text.Replace("\r\n", "");
+
+            char[,] array = new char[nbrRows, nbrColumns];
+
+            for (int row = 0; row < nbrRows; row++)
+            {
+                for (int column = 0; column < nbrColumns; column++)
+                {
+                    array[row, column] = text[(row * nbrColumns) + column];
+                }
+            }
+
+            for (int row = 1; row < nbrRows - 1; row++)
+            {
+                for (int column = 1; column < nbrColumns - 1; column++)
+                {
+                    if (array[row, column] == 'A')
+                    {
+						if (((array[row - 1, column - 1] == 'M' && array[row + 1, column + 1] == 'S') || (array[row - 1, column - 1] == 'S' && array[row + 1, column + 1] == 'M'))
+							&& ((array[row - 1, column + 1] == 'M' && array[row + 1, column - 1] == 'S') || (array[row - 1, column + 1] == 'S' && array[row + 1, column - 1] == 'M')))
+							nbrXmas++;
+                    }
+                }
+            }
+            return nbrXmas;
+        }
 	}
 }
