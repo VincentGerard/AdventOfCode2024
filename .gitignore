@@ -409,3 +409,8 @@ obj/
 /wwwroot/node_modules
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,dotnetcore
+/AdventOfCode2024/Input/day1.txt
+/AdventOfCode2024/Input/day2.txt
+/AdventOfCode2024/Input/day3.txt
+/AdventOfCode2024/Input/day4.txt
+/AdventOfCode2024/Input/day5.txt
