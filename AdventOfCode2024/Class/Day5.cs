@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2024.Class
+﻿using System.Data;
+
+namespace AdventOfCode2024.Class
 {
 	public static class Day5
 	{
@@ -19,23 +21,26 @@
 
 		public static int OrderListByRules(List<int> update, List<(int n1, int n2)> rules)
 		{
-            while(true)
+			while(true)
 			{
-                foreach (var rule in rules)
-                {
-                    int index1 = update.IndexOf(rule.n1);
-                    int index2 = update.IndexOf(rule.n2);
+				foreach (var rule in rules)
+				{
+					int index1 = update.IndexOf(rule.n1);
+					int index2 = update.IndexOf(rule.n2);
 
-                    if (index1 != -1 && index2 != -1 && index2 < index1)
-                    {
-                        int temp = update[index1];
-                        update[index1] = update[index2];
-                        update[index2] = temp;
-                    }
-                }
-            }
-			//TODO Finish ordering the list
-			return 0;
+					if (index1 != -1 && index2 != -1 && index2 < index1)
+					{
+						int temp = update[index1];
+						update[index1] = update[index2];
+						update[index2] = temp;
+					}
+				}
+				if(GetMiddleValueIfValid(update, rules) != 0)
+				{
+					break;
+				}
+			}
+			return update.ElementAt(update.Count / 2);
 		}
 
 		public static int GetPart1Result(string filename)
@@ -70,7 +75,6 @@
 			}
 
 			updates.ForEach(x => totalMiddleValue += GetMiddleValueIfValid(x, rules));
-
 			return totalMiddleValue;
 		}
 
@@ -107,24 +111,13 @@
 
 			foreach(var update in updates)
 			{
-				long result = GetMiddleValueIfValid(update, rules);
-				if(result > 0)
+				if(GetMiddleValueIfValid(update, rules) == 0)
 				{
 					badUpdates.Add(update);
 				}
 			}
 
-            //Order bad updates
-			foreach(var update in badUpdates)
-			{
-                
-
-            }
-            
-
-			//Get Middle from bad updates
-			
-
+			badUpdates.ForEach(x => totalMiddleValue += OrderListByRules(x, rules));
             return totalMiddleValue;
         }
 	}

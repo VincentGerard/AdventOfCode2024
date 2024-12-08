@@ -22,6 +22,8 @@ namespace AdventOfCode2024
 				Console.WriteLine("42.	Day 4 Part 2");
 				Console.WriteLine("51.	Day 5 Part 1");
 				Console.WriteLine("52.	Day 5 Part 2");
+				Console.WriteLine("61.	Day 6 Part 1");
+				Console.WriteLine("62.	Day 6 Part 2");
 
 				var watch = System.Diagnostics.Stopwatch.StartNew();
 				
@@ -68,6 +70,14 @@ namespace AdventOfCode2024
 				else if(input == "52")
 				{
 					Console.WriteLine("\nDay 5 Part 2 Result: " + Day5.GetPart2Result("Input\\day5.txt"));
+				}
+				else if(input == "61")
+				{
+					Console.WriteLine("\nDay 6 Part 1 Result: " + Day6.GetPart1Result("Input\\day6.txt"));
+				}
+				else if(input == "62")
+				{
+					Console.WriteLine("\nDay 6 Part 2 Result: " + Day6.GetPart2Result("Input\\day6.txt"));
 				}
 
 				watch.Stop();
