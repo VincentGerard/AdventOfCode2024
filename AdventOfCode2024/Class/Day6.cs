@@ -249,6 +249,18 @@ namespace AdventOfCode2024.Class
 				}
 
 				nbrObstacles += AreTurningPointsFormingLoop(turningPoints, oldRow, oldColumn, array);
+				array[oldRow, oldColumn] = '.';
+
+				for (int curRow = 0; curRow < nbrRows; curRow++)
+				{
+					for (int curColumn = 0; curColumn < nbrColumns; curColumn++)
+					{
+						Console.Write(array[curRow, curColumn]);
+					}
+					Console.WriteLine();
+				}
+				Console.WriteLine();
+				Console.WriteLine();
 			}
 
 			return nbrObstacles;
